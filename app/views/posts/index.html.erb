@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+
+<%= form_tag(posts_path, method: :get, class: "search_form") do %>
+<div class="field">
+  <p class="light_highlight">
+     <%=label_tag(:q, "Search") %>
+  </p>
+    <%= text_field_tag :title %>
+
+</div>
+
+<% end %>
+
+
+<a class="primary_button medium_button"<%= link_to 'Create Post', new_post_path %></a>
+<% @posts.each do |post| %>
+    <div class="post">
+      <div class="post_left">
+        <td style="max-height:150px;"><%=image_tag post.image %></td>
+      </div>
+      <div class="post_right">
+        <h2><%= post.title %></h2>
+        <p><%= post.body %></p>
+        <p><%= post.user.email %></p>
+        <p><%= post.user_id %></p>
+
+
+        <% if post.user_id == current_user.id %>
+        <a class="primary_button medium_button"<%= link_to 'Edit', edit_post_path(post) %></a>
+        <a class="secondary_button medium_button"<%= link_to 'Show', post %></a>
+        <a class="secondary_button medium_button"<%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></a>
+        <% end %>
+
+
+      </div>
+    </div>
+<% end %>
+<%= will_paginate @posts %>

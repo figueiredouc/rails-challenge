@@ -1,0 +1,25 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.post {
+    background-color: #F2F2F2;
+    overflow: auto;
+    padding: 40px;
+    border-radius: 4px;
+}
+
+.post .post_left {
+    width: 45%;
+    float: left;
+    margin-right: 5%;
+}
+
+
+.post .post-left .img {
+    max-height: 400px;
+}
+
+.post .post_right {
+    width: 50%;
+    float: left;
+}
