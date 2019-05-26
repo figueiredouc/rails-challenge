@@ -19,6 +19,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def my_posts
+      @posts = Post.paginate(page: params[:page], per_page: 5).all.where('user_id LIKE ?', "%#{current_user.id}%")
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show
